@@ -25,8 +25,8 @@ public class PartyMember : Being, IAttackable {
 	public int maxHitPoints = 0;
 	public int maxMagicPoints = 0;
 	public List<Ability> abilities = new List<Ability> ();
-	public List<BuffRiposte> buffs = new List<BuffRiposte> ();
 	public float threat;
+	public float defaultThreat = 100;
 
 	public void TurnActive(){
 		int i = 0;
@@ -97,6 +97,7 @@ public class PartyMember : Being, IAttackable {
 
 	// Use this for initialization
 	void Start () {
+		threat = defaultThreat;
 		abilities.Add (new AbilityAttack());
 		turnable = GetComponent<Turnable> ();
 		magicPoints = maxMagicPoints;

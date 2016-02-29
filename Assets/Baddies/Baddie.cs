@@ -8,6 +8,21 @@ public class Baddie : Being, IAttackable {
 	private Button button;
 	public Turnable turnable;
 
+	protected PartyMember DeriveTargetFromThreat(){
+		float randomValue = Random.Range (0, PartyMember.members[0].threat + PartyMember.members[1].threat + PartyMember.members[2].threat + PartyMember.members[3].threat);
+		PartyMember target;
+		if (randomValue <= PartyMember.members [0].threat) {
+			target = PartyMember.members [0];
+		} else if (randomValue <= PartyMember.members [0].threat + PartyMember.members [1].threat) {
+			target = PartyMember.members [1];
+		} else if (randomValue <= PartyMember.members [0].threat + PartyMember.members [1].threat + PartyMember.members [2].threat) {
+			target = PartyMember.members [2];
+		} else { 
+			target = PartyMember.members [3];
+		}
+		return(target);
+	}
+
 	public override int Strength(){
 		return(Mathf.Clamp(strength + strengthOffset, 0, 9999));
 	}

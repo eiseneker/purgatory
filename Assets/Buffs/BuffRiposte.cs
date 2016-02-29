@@ -2,10 +2,14 @@
 using System.Collections;
 using System;
 
-public class BuffRiposte {
+public class BuffRiposte : Buff {
+
+	public BuffRiposte(){
+		bufftype = BuffType.Reaction;
+	}
 
 	// Use this for initialization
-	public int Perform (PartyMember owner, GameObject attacker, int damage) {
+	public override int Perform (PartyMember owner, GameObject attacker, int damage) {
 		if (UnityEngine.Random.value < 25f) {
 			EventQueue.AddMessage (owner.beingName + " ripostes!");
 			EventQueue.AddLambda (() => {
@@ -15,7 +19,7 @@ public class BuffRiposte {
 		return(0);
 	}
 
-	public bool NextTurn (){
+	public override bool NextTurn (){
 		return(false);
 	}
 

@@ -92,6 +92,7 @@ public class GameController : MonoBehaviour {
 	public static void ExitEncounter(){
 		foreach (PartyMember partyMember in PartyMember.members) {
 			partyMember.buffs.Clear ();
+			partyMember.threat = partyMember.defaultThreat;
 		}
 		inEncounter = false;
 	}
